@@ -12,11 +12,11 @@ class CartItem extends React.Component{
         }
     /* 2nd way of bind */
     //this.increaseQuantity=this.increaseQuantity.bind(this);
-        this.testing();
+        //this.testing();
     }
 
     // Promises - setState
-    testing(){
+    /*testing(){
         const promise=new Promise((resolve,reject) => {
             setTimeout(()=>{
                 resolve('done');
@@ -32,7 +32,7 @@ class CartItem extends React.Component{
 
             console.log('state',this.state);
         });
-    }
+    }*/
     
     //eventListener - onclick function
     //when use 1st and 2nd way to bindS
