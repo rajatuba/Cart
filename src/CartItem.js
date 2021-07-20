@@ -10,11 +10,48 @@ class CartItem extends React.Component{
             qty:1,
             img:''
         }
+    /* 2nd way of bind */
+    //this.increaseQuantity=this.increaseQuantity.bind(this);
     }
-    this.increaseQuantity=this.increaseQuantity.bind(this);
+    
     //eventListener - onclick function
-    increaseQuantity(){
+    //when use 1st and 2nd way to bindS
+    /*
+    increaseQuantity() {
         console.log('this.state',this.state);
+    }
+    */
+    /* 3rd way to bind - use arrow function */
+    increaseQuantity = () =>{
+        //this.state.qty +=1;
+        //console.log('this.state',this.state);
+
+        //setState form 1 -> giving it object
+        /*this.setState({
+            qty:this.state.qty+1
+        });*/
+
+        //setState form2 -> function form (if prev state required)
+        this.setState((prevState) => {
+            return {
+                qty:prevState.qty+1
+            }
+        }, () => {
+            //callback
+            console.log('this.state',this.state);
+        });
+    }
+
+    decreaseQuantity = () =>{
+        const {qty}=this.state;
+        if(qty==0){
+            return;
+        }
+        this.setState((prevState) => {
+            return {
+                qty:prevState.qty-1
+            }
+        });
     }
     
     render(){
@@ -36,6 +73,7 @@ class CartItem extends React.Component{
                             alt="increase" 
                             className='action-icons' 
                             src="https://image.flaticon.com/icons/png/512/1828/1828926.png"
+                            //1st way of binding
                             /*onClick={this.increaseQuantity.bind(this)}*/
                             onClick={this.increaseQuantity}
                         />
@@ -43,6 +81,7 @@ class CartItem extends React.Component{
                             alt="decrease"
                             className='action-icons' 
                             src="https://image.flaticon.com/icons/png/512/992/992683.png"
+                            onClick={this.decreaseQuantity}
                         />
                         <img 
                             alt="delete" 
