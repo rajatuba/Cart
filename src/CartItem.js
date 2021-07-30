@@ -1,27 +1,33 @@
 import React from 'react';
 
-class CartItem extends React.Component{
+
+//class CartItem extends React.Component{
+    //converting to function
+const CartItem=(props)=>{
     
     
-    render(){
         //props
-        console.log('this.props',this.props)
+        //console.log('this.props',this.props)
 
         //want price,qty,title form this.state,now from props
         //const {price,title,qty}=this.props;
         //for product prop in Cart.js
-        const {price,title,qty}=this.props.product;
+        //const {price,title,qty}=this.props.product;
+
+        //don't need this as its not class
+        const {price,title,qty}=props.product;
+
         const {
             product,
             onIncreaseQuantity,
             onDecreaseQuantity,
             onDeleteProduct
-        }=this.props;
+        }=props;
         return (
             
             <div className='cart-item'>
                 <div className='left-block'>
-                    <img style={styles.image} alt="Item image"/>
+                    <img style={styles.image} src={product.img}/>
                 </div>
                 <div className='right-block'>
                     {/* <div style={{fontSize:25}}>{this.state.title}</div> */}
@@ -55,8 +61,9 @@ class CartItem extends React.Component{
                 </div>
             </div>
         )
-    }
+    
 }
+
 /* Styling using object */
 const styles={
     image:{
